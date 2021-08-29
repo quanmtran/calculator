@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 20px;
+	--bg-color: rgb(240, 240, 240);
+	--display-color: rgb(50, 50, 50);
+	--btn-opacity: 0.5;
+	--button-height: 3rem;
+	--display-height-min: calc(var(--button-height) * 2);
+}
+
+body {
+	font-family: 'Play', sans-serif;
+	margin: 0;
+	background: var(--bg-color);
+}
+
+.calculator-grid {
+	min-height: 100vh;
+	display: grid;
+	justify-content: center;
+	align-content: center;
+	grid-template-columns: repeat(4, var(--button-height));
+	grid-template-rows: minmax(var(--display-height-min), auto) repeat(
+			5,
+			var(--button-height)
+		);
+}
+
+.span-two {
+	grid-column: span 2;
+}
+
+.calculator-display {
+	grid-column: 1 / -1;
+	background-color: var(--display-color);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: flex-end;
+	word-wrap: break-word;
+	word-break: break-all;
+	padding: 0 0.5ch;
+	color: var(--bg-color);
+}
+
+.calculator-display .current-operand {
+	font-size: 1.8rem;
+}
+
+button {
+	font-family: inherit;
+	font-size: inherit;
+	color: var(--display-color);
+}
+
+.calculator-display,
+button {
+	border: 0.1rem solid var(--bg-color);
+}
+
+button.btn-color-darker {
+	background-color: rgba(150, 150, 150, var(--btn-opacity));
+}
+
+button.btn-color-lighter {
+	background-color: rgba(210, 210, 210, var(--btn-opacity));
+}
+
+button.btn-color-red {
+	background-color: rgba(255, 0, 0, var(--btn-opacity));
+	color: var(--bg-color);
+}
+
+button:hover {
+	cursor: pointer;
+	--btn-opacity: 0.8;
+}
